@@ -1,0 +1,16 @@
+.navbar{
+    position: relative;
+}
+
+.login{
+    position: absolute;
+    padding: 20px;
+    background: #FFFF;
+    transform: scale(0);
+    transition: 350ms;
+    transform-origin: top;
+}
+
+.login.open{
+    transform: scale(1);
+}

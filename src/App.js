@@ -1,9 +1,10 @@
 
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import { LoadingScreen } from './components';
+import { LoadingScreen, NavBar } from './components';
 import './App.css';
 import { Products, ProductDetail, Purchases } from './pages';
 import { useSelector } from 'react-redux';
+
 
 function App() {
 
@@ -13,9 +14,10 @@ function App() {
     <div className="App">
       <HashRouter>
         {isLoading && <LoadingScreen/>}
+        <NavBar />
         <Routes>
           <Route path="/" element={<Products />}></Route>
-          <Route path="/products/:id" element={<ProductDetail />}></Route>
+          <Route path="/product/:id" element={<ProductDetail />}></Route>
           <Route path="/purchases" element={<Purchases/>}></Route>
         </Routes>
       </HashRouter>

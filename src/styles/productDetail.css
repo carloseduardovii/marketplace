@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.img-detail{
+    width: 300px;
+}
+
+.product-detatl img{
+    width: 100px;
+}

@@ -1,2 +1,2 @@
 export { default as LoadingScreen } from './LoadingScreen'
-//navbar
+export { default as NavBar } from './NavBar'

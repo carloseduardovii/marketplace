@@ -6,28 +6,27 @@ import ProductDetail from './ProductDetail'
 
 const Products = () => {
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
-   const dispatch = useDispatch()
-   
-   const products = useSelector(state => state.products)
-   const categories = useSelector(state => state.categories)
+  const dispatch = useDispatch()
+  
+  const products = useSelector(state => state.products)
+  const categories = useSelector(state => state.categories)
 
-   const [ headLine, setHeadLine ] = useState('')
+  const [ headLine, setHeadLine ] = useState('')
 
-   useEffect(() => {
-     dispatch(getProductsThunk())
-     dispatch(getCategoriesThunk())
-   }, [ dispatch ])
+  useEffect(() => {
+    dispatch(getProductsThunk())
+    dispatch(getCategoriesThunk())
+  }, [ dispatch ])
 
-   console.log(products)
-   //console.log(categories)
-   
-   const searchProducts = (e) => {
-     e.preventDefault()
-     dispatch(filterHeadLineThunk(headLine))
-   
-   }
+  //console.log(products)
+  //console.log(categories)
+  
+  const searchProducts = (e) => {
+    e.preventDefault()
+    dispatch(filterHeadLineThunk(headLine))
+  }
 
    //console.log(headLine)
 
@@ -64,7 +63,7 @@ const Products = () => {
         <button>Search</button>
       </form>
 
-      <div className='product-cart1'>
+      <div className='product-card'>
 
       {
          products.length === 0 ? (
@@ -73,19 +72,18 @@ const Products = () => {
           
           products.map(product => (
             <div className='product'>
-              <Link to={`products/${ProductDetail.id}`}>
+              <Link to={`/product/${product.id}`}>
               <div className='product-img'>
                 <img src={product.productImgs[0]} alt="" width={190}/>
               </div>
               </Link>
-              
               <div>
                 <h6 key={product.id}>
-                  {product.title}
+                {product.title}
                   </h6>
                 <div className='purchase-card'>
                   <p>Price $ {product.price}</p>
-                  <i class="fa-solid fa-cart-shopping"></i>
+                  <i className="fa-solid fa-cart-shopping"></i>
                 </div>
                 
               </div>
