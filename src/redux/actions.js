@@ -81,3 +81,18 @@ export const filterHeadLineThunk = (headLine) => {
     }
 }
 
+export const loginThunk = (credentials) => {
+    return (dispatch) => {
+        dispatch (setIsLoading(true))
+        return axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/users/login/", credentials)
+            .finally(() => dispatch(setIsLoading(false)))
+    }
+}
+
+export const addFavoriteThunk = news => {
+    return dispatch => {
+        dispatch(setIsLoading(true))
+        return axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/cart", news)
+            .finally(() => dispatch(setIsLoading(false)))
+    }
+}

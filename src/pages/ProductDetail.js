@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { getProductsThunk } from '../redux/actions'
+import { addFavoriteThunk, getProductsThunk } from '../redux/actions'
 import '../styles/productDetail.css'
 
 const ProductDetail = () => {
@@ -12,6 +12,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch()
 
   const [ recomendProducts, setRecomendProducts ] = useState([])
+  const [ rate, setRate ] = useState(0);
   
   const products = useSelector(state => state.products)
 
@@ -31,10 +32,26 @@ const ProductDetail = () => {
   }, [dispatch, productsFound])
 
   //console.log(recomendProducts)
-  
+  const addFavorite = () =>{
+    const news = {
+      news: id,
+      rate: rate
+    }
+    dispatch(addFavoriteThunk(news))
+  }
+
     
   return (
     <section className='product-detatl'>
+
+      <div className="favorites">
+      <div className="input-container">
+        <label htmlFor="rate"></label>
+        <input type="text" id="rate" value={rate} onChange={e => setRate(e.target.value)}/>
+      </div>
+        <button onClick={addFavorite}>Add to favorites</button>
+      </div>
+
       <h2>e-commerce</h2>
       <div className='return-home'>
         <Link to="/"><h3>Home</h3></Link>

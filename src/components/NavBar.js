@@ -1,28 +1,44 @@
-import axios from 'axios'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { loginThunk } from "../redux/actions";
+
 import '../styles/navbar.css'
+import Purchases from './Purchases';
 
 const NavBar = () => {
 
     const [loginOpen, setLoginOpen] = useState(false)
+    const [isPurchasesOpen, setIsPurchasesOpen] = useState(false)
     
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    localStorage.setItem("number", "10")
+    const [loginError, setLoginError] = useState("");
+
+    //localStorage.setItem("number", "10")
+    const dispatch = useDispatch();
 
     const login = (e) => {
         e.preventDefault()
         const credentials = {email, password}
-        axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/users/login/", credentials)
-        .then((res) => localStorage.setItem("token", res.data.data.token))
+        dispatch(loginThunk(credentials))
+        .then(res => { 
+            localStorage.setItem("token", res.data.data.token);
+        setLoginError("");
+        setLoginOpen(false);
+    })
+    .catch(error => {
+        setLoginError(error.response.data.message)
+    })
     }
+
+    //console.log(localStorage.getItem("token"))
 
   return (
     <div className='navbar'>
         <nav>
             <button onClick={() => setLoginOpen(!loginOpen)}><i className="fa-solid fa-circle-user"></i></button>
-            <button><i className="fa-solid fa-cart-shopping"></i></button>
+            <button onClick={() => setIsPurchasesOpen(!isPurchasesOpen)} ><i className="fa-solid fa-cart-shopping"></i></button>
         </nav>
         
         <form onSubmit={login} className={`login ${loginOpen ? 'open' : ''}`} >
@@ -32,17 +48,29 @@ const NavBar = () => {
                 onChange={(e) => setEmail(e.target.value)} 
                 value={email}
             />
-            <input 
-                type="password" 
-                placeholder='password' 
-                onChange={(e) => setPassword(e.target.value)} 
-                value={password}
-            />
-        <button>Submit</button>
+
+            {
+                localStorage.getItem("token") ? 
+                    <button onClick={() => localStorage.setItem("token", "")} type="button">
+                        Log Out
+                    </button> : (
+                    <>
+                    <input 
+                        type="password" 
+                        placeholder='password' 
+                        onChange={(e) => setPassword(e.target.value)} 
+                        value={password}
+                    />   
+                    <p>{loginError}</p>
+                    <button>Submit</button>
+                    </>
+                )
+            }
+
         </form>
         
 
-        
+      <Purchases isPurchasesOpen={isPurchasesOpen}/>  
     </div>
   )
 }
