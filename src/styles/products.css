@@ -1,0 +1,164 @@
+.products-page{
+    display: flex;
+  
+  }
+  
+  /*CATEGORIES*/
+  .categories{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: 200px;
+    justify-content: space-evenly;
+  }
+  
+  .categories input{
+    width: 100px;
+  }
+  
+  .categories h4{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: #FF525A;
+  }
+
+  .categories button{
+    width: 50px;
+    height: 25px;
+    font-size: 7px;
+    background-color: #FF525A;
+    border: 1px solid rgb(0,0,0,.3);
+    color: #FFFF;
+  }
+  
+  
+  /*PRODUCTS*/
+  .product-card{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: flex-start;
+    border: 1px solid rgb(0,0,0,.3);
+    box-shadow: 1px 1px 2px rgb(0,0,0,.3);
+  }
+  
+  .form form{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .form input{
+    width: 60vw;
+    border: 1px solid rgb(0,0,0,.3);
+  }
+  
+  .form input[placeholder]{
+    font-size: 12px;
+    height: 25px;
+  }
+  
+  .form button{
+    width: 50px;
+    height: 25px;
+    font-size: 10px;
+    background-color: #FF525A;
+    border: 1px solid rgb(0,0,0,.3);
+  }
+  
+  .form .fa-solid{
+    color: #FFFF;
+  }
+
+  .product{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgb(0,0,0,.2);
+    box-shadow: 1px 1px 3px rgb(0,0,0,.3);
+    padding: 10px;
+    margin: 10px 10px;
+    border-radius: 8px;
+    width: 230px;
+    height: 250px;
+    
+  }
+  
+  .product h6{
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    margin-bottom: 5px;
+    /* margin-top: -40px; */
+  }
+  
+  .product-img{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+    padding: 4px;
+    margin-bottom: 10px;
+    
+  }
+  
+  .product img{
+    object-fit: contain;
+    
+  }
+  
+
+  /*---------------------PUERCHASE-CARD--------------------*/ 
+  .purchase-card{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .purchase-card article{
+    color: rgb(0,0,0,.5);
+    font-size: 12px;
+  }
+
+  .purchase-card i{
+    display: flex;
+    background-color: #FF525A;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+
+  .purchase-card .fa-solid{
+    font-size: 12px;
+    color: #FFFF;
+  }
+  
+  
+  
+  
+  @media screen and (min-width: 762px){
+    .categories{
+      padding: 10px;
+      height: 250px;
+    }
+    
+    .categories input{
+      width: 100px;
+    }
+    
+    .categories h4{
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .categories button{
+      width: 100px;
+      height: 30px;
+      font-size: 14px;
+    }
+  
+  }

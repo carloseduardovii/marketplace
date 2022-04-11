@@ -8,6 +8,62 @@
     width: 300px;
 }
 
+.link-home{
+    padding: 10px;
+    display: flex;
+}
+
+.link-home :Link{
+    text-decoration: none;
+}
+
+.link-home h3{
+    color: black;
+    font-size: 13px;
+}
+
+.icon-circle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.link-home .fa-circle{
+    font-size: 5px;
+}
+
+.product-desc{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
 .product-detatl img{
     width: 100px;
+    margin-bottom: 10px;
+}
+
+.img-detail{
+    display: flex;
+    justify-content: center;
+}
+
+.desc-detail h3{
+    margin-bottom: 10px;
+}
+
+.product-desc button{
+    height: 30px;
+    background: #FF525A;
+    color: #FFFF;
+}
+
+.product-desc i{
+    color: #FFFF;
+}
+
+@media screen and (min-width: 762px){
+
 }

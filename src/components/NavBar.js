@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginThunk } from "../redux/actions";
-
 import '../styles/navbar.css'
 import Purchases from './Purchases';
 
@@ -36,6 +35,7 @@ const NavBar = () => {
 
   return (
     <div className='navbar'>
+        <h2>e-commerce</h2>
         <nav>
             <button onClick={() => setLoginOpen(!loginOpen)}><i className="fa-solid fa-circle-user"></i></button>
             <button onClick={() => setIsPurchasesOpen(!isPurchasesOpen)} ><i className="fa-solid fa-cart-shopping"></i></button>

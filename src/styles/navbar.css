@@ -14,3 +14,35 @@
 .login.open{
     transform: scale(1);
 }
+
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgb(0,0,0, .3);
+    box-shadow: 1px 1px 4px rgb(0,0,0, .3);
+    height: 50px;
+}
+
+.navbar h2{
+    color: #FF525A;
+}
+
+.navbar nav{
+    display: flex;
+    justify-content: space-evenly;
+    width: 5rem;
+}
+
+.navbar nav button{
+    border: none;
+    font-size: 20px;
+    background: none;
+}
+
+.fa-solid{
+    color: #FF525A;
+}

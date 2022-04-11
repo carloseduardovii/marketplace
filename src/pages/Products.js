@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { filterCategoryThunk, filterHeadLineThunk, getCategoriesThunk, getProductsThunk } from '../redux/actions'
-import ProductDetail from './ProductDetail'
+import '../styles/products.css'
+
 
 const Products = () => {
 
@@ -60,7 +61,7 @@ const Products = () => {
           value={headLine} 
           onChange={e => setHeadLine(e.target.value)}
         />
-        <button>Search</button>
+        <button><i className="fa-solid fa-magnifying-glass"></i></button>
       </form>
 
       <div className='product-card'>
@@ -82,7 +83,10 @@ const Products = () => {
                 {product.title}
                   </h6>
                 <div className='purchase-card'>
-                  <p>Price $ {product.price}</p>
+                  <div>
+                    <article>Price</article>
+                  <p>$ {product.price}</p>  
+                  </div>
                   <i className="fa-solid fa-cart-shopping"></i>
                 </div>
                 

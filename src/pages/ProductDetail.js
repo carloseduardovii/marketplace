@@ -51,21 +51,31 @@ const ProductDetail = () => {
       </div>
         <button onClick={addFavorite}>Add to favorites</button>
       </div>
-
-      <h2>e-commerce</h2>
+{/* 
+      <h2>e-commerce</h2> */}
       <div className='return-home'>
-        <Link to="/"><h3>Home</h3></Link>
-        <p key={productsFound.id}>{productsFound?.title}</p> 
+        <div className='link-home'>
+          <Link to="/"><h3>Home </h3></Link>
+          <div className='icon-circle'>
+            <i class="fa-solid fa-circle"></i>
+          </div>
+          <article key={productsFound.id}> {productsFound?.title}</article>
+        </div>
       </div>
-      <div className='img-detail'>
-        <img src={productsFound?.productImgs[0]} alt=""/>
-      </div>
-      <div className='desc-detail'>
-        <h3 className='title-detail'>{productsFound?.title}</h3>
-        <p className='product-desc'>{productsFound?.description}</p>
-        <p className='price'>{productsFound?.price}</p>
-      </div>
-      <button>Add to cart<i class="fa-solid fa-cart-shopping"></i></button>
+      
+      <div className='product-desc'>
+        <div className='img-detail'>
+          <img src={productsFound?.productImgs[0]} alt=""/>
+        </div>
+        <div className='desc-detail'>
+          <h3>{productsFound?.title}</h3>
+          <p>{productsFound?.description}</p>
+        </div>
+          <article>Price</article>
+          <p className='price'>{productsFound?.price}</p>
+          <button>Add to cart <i className="fa-solid fa-cart-shopping"></i></button>
+        </div>
+      
 
       <ul>
         {
