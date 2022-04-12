@@ -63,44 +63,50 @@ const ProductDetail = () => {
         </div>
       </div>
       
-      <div className='product-desc'>
-        <div className='img-detail'>
-          <img src={productsFound?.productImgs[0]} alt=""/>
-        </div>
-        <div className='desc-detail'>
-          <h3>{productsFound?.title}</h3>
-          <p>{productsFound?.description}</p>
-        </div>
-          <article>Price</article>
-          <p className='price'>{productsFound?.price}</p>
-          <button>Add to cart <i className="fa-solid fa-cart-shopping"></i></button>
-        </div>
+     <div className='card-desc'>
+     <div className='product-desc'>
+          <div className='img-detail'>
+            <img src={productsFound?.productImgs[0]} alt="" width={200}/>
+          </div>
+          <div className='desc-detail'>
+            <h3>{productsFound?.title}</h3>
+            <p>{productsFound?.description}</p>
+            <article>Price</article>
+            <p className='price'>$ {productsFound?.price}</p>
+            <button>Add to cart <i className="fa-solid fa-cart-shopping"></i></button>
+          </div>
+      </div>
+     </div>
       
-
-      <ul>
-        {
-          recomendProducts.map(productItem => (
-            <div className='product'>
-              <Link to={`/product/${productItem.id}`}>
-              <div className='product-img'>
-                <img src={productItem.productImgs[0]} alt="" width={190}/>
-              </div>
-              </Link>
-              <div>
-                <h6 key={productItem.id}>
-                {productItem.title}
-                  </h6>
-                <div className='purchase-card'>
-                  <p>Price $ {productItem.price}</p>
-                  <i className="fa-solid fa-cart-shopping"></i>
+    
+        <h4>Discover similar products</h4>
+      
+      <div className='recomend'>
+        <ul className='product-recomend'>
+          {
+            recomendProducts.map(productItem => (
+              <div className='product'>
+                <Link to={`/product/${productItem.id}`}>
+                <div className='product-img'>
+                  <img src={productItem.productImgs[0]} alt="" width={190}/>
                 </div>
-                
+                </Link>
+                <div>
+                  <h6 key={productItem.id}>
+                  {productItem.title}
+                    </h6>
+                  <div className='purchase-card'>
+                    <p>Price $ {productItem.price}</p>
+                    <i className="fa-solid fa-cart-shopping"></i>
+                  </div>
+                  
+                </div>
               </div>
-            </div>
-            
-          ))
-        }
-      </ul>
+              
+            ))
+          }
+        </ul>
+      </div>    
     </section>
     
   )

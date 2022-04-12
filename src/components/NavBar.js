@@ -38,6 +38,7 @@ const NavBar = () => {
         <h2>e-commerce</h2>
         <nav>
             <button onClick={() => setLoginOpen(!loginOpen)}><i className="fa-solid fa-circle-user"></i></button>
+            <button><i className="fa-solid fa-store"></i></button>
             <button onClick={() => setIsPurchasesOpen(!isPurchasesOpen)} ><i className="fa-solid fa-cart-shopping"></i></button>
         </nav>
         

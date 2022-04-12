@@ -35,12 +35,14 @@
     display: flex;
     justify-content: space-evenly;
     width: 5rem;
+    width: 120px;
 }
 
 .navbar nav button{
     border: none;
     font-size: 20px;
     background: none;
+   
 }
 
 .fa-solid{
