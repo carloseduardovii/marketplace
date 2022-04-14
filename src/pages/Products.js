@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, /*useNavigate*/ } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { filterCategoryThunk, filterHeadLineThunk, getCategoriesThunk, getProductsThunk } from '../redux/actions'
 import '../styles/products.css'
 
 
 const Products = () => {
 
+
   // const navigate = useNavigate()
+
 
   const dispatch = useDispatch()
   

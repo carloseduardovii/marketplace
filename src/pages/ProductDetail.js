@@ -51,8 +51,7 @@ const ProductDetail = () => {
       </div>
         <button onClick={addFavorite}>Add to favorites</button>
       </div>
-{/* 
-      <h2>e-commerce</h2> */}
+      {/*-----------<h2>e-commerce</h2>-------------*/}
       <div className='return-home'>
         <div className='link-home'>
           <Link to="/"><h3>Home </h3></Link>
