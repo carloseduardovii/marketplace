@@ -40,26 +40,29 @@ const ProductDetail = () => {
     dispatch(addFavoriteThunk(news))
   }
 
-    
   return (
     <section className='product-detatl'>
 
-      <div className="favorites">
+      {/* <div className="favorites">
       <div className="input-container">
         <label htmlFor="rate"></label>
         <input type="text" id="rate" value={rate} onChange={e => setRate(e.target.value)}/>
       </div>
-        <button onClick={addFavorite}>Add to favorites</button>
-      </div>
+      <button onClick={addFavorite}><i className="fa-solid fa-bookmark"></i></button>
+      </div> */}
       {/*-----------<h2>e-commerce</h2>-------------*/}
       <div className='return-home'>
         <div className='link-home'>
           <Link to="/"><h3>Home </h3></Link>
           <div className='icon-circle'>
-            <i class="fa-solid fa-circle"></i>
+            <i className="fa-solid fa-circle"></i>
           </div>
-          <article key={productsFound.id}> {productsFound?.title}</article>
+          <article>{productsFound?.title}</article>
         </div>
+        <button 
+          onClick={addFavorite}>
+            <i className="fa-solid fa-bookmark"></i>
+        </button>
       </div>
       
      <div className='card-desc'>
@@ -68,7 +71,12 @@ const ProductDetail = () => {
             <img src={productsFound?.productImgs[0]} alt="" width={200}/>
           </div>
           <div className='desc-detail'>
+            <div className='desc-favotites'>
             <h3>{productsFound?.title}</h3>
+            
+            </div>
+            
+
             <p>{productsFound?.description}</p>
             <article>Price</article>
             <p className='price'>$ {productsFound?.price}</p>
@@ -94,18 +102,22 @@ const ProductDetail = () => {
                   <h6 key={productItem.id}>
                   {productItem.title}
                     </h6>
-                  <div className='purchase-card'>
-                    <p>Price $ {productItem.price}</p>
-                    <i className="fa-solid fa-cart-shopping"></i>
+                    <div className='purchase-card'>
+                  <div>
+                    <article>Price</article>
+                    <p>$ {productItem.price}</p>  
                   </div>
-                  
+                  <i className="fa-solid fa-cart-shopping"></i>
+                </div>
+
                 </div>
               </div>
               
             ))
           }
         </ul>
-      </div>    
+      </div>
+      
     </section>
     
   )

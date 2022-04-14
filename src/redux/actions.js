@@ -9,7 +9,7 @@ export const actions = {
     setProducts: "SET_PRODUCTS",
     setIsLoading: "SET_IS_LOADING",
     setCategories: "SET_CATEGORIES",
-    
+    setPurchases: "SET_PURCHASES"
 }
 
 
@@ -20,6 +20,10 @@ export const actions = {
 export const setProducts = (products) => ({
     type: actions.setProducts,
     payload: products
+})
+
+const getConfig = () => ({
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 })
 
 
@@ -93,6 +97,19 @@ export const addFavoriteThunk = news => {
     return dispatch => {
         dispatch(setIsLoading(true))
         return axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/cart", news)
+            .finally(() => dispatch(setIsLoading(false)))
+    }
+}
+
+export const getPurchasesThunk = (getConfig) =>{
+    return dispatch => {
+        dispatch(setIsLoading(true))
+        return axios.get('https://ecommerce-api-react.herokuapp.com/api/v1/cart', getConfig())
+            .then(res => dispatch(setPurchases(res.data.data.products)))
+            .catch(error =>{
+                if(error.response.status === 404)
+                console.log("El carrito está vacío")
+            })
             .finally(() => dispatch(setIsLoading(false)))
     }
 }

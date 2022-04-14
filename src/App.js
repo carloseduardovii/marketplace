@@ -1,5 +1,5 @@
 
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { LoadingScreen, NavBar } from './components';
 import './App.css';
 import { Products, ProductDetail, Purchases } from './pages';
@@ -21,6 +21,11 @@ function App() {
           <Route path="/purchases" element={<Purchases/>}></Route>
         </Routes>
       </HashRouter>
+      <footer>
+          <h5>Copyright ©2022</h5>
+          <p><b>❮'by Ariel Fuentes García & Carlos Eduardo Rodriguez 2022'❯</b></p>
+          <p><b>Academlo</b></p>
+      </footer>
     </div>
   );
 }

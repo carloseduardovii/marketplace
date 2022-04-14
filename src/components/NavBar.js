@@ -20,7 +20,7 @@ const NavBar = () => {
     const login = (e) => {
         e.preventDefault()
         const credentials = {email, password}
-        dispatch(loginThunk(credentials))
+        dispatch(loginThunk(credentials)) 
         .then(res => { 
             localStorage.setItem("token", res.data.data.token);
         setLoginError("");
@@ -37,41 +37,63 @@ const NavBar = () => {
     <div className='navbar'>
         <h2>e-commerce</h2>
         <nav>
-            <button onClick={() => setLoginOpen(!loginOpen)}><i className="fa-solid fa-circle-user"></i></button>
+            <button onClick={() => setLoginOpen(!loginOpen)}><i className="fa-solid fa-user"></i></button>
             <button><i className="fa-solid fa-store"></i></button>
             <button onClick={() => setIsPurchasesOpen(!isPurchasesOpen)} ><i className="fa-solid fa-cart-shopping"></i></button>
-        </nav>
+        
         
         <form onSubmit={login} className={`login ${loginOpen ? 'open' : ''}`} >
-            <input 
+            <div className='icon-login'>
+                <i className="fa-solid fa-circle-user"></i>
+            </div>
+            <div className='test'>
+            <article>
+                <h5>Test Data</h5>
+                <p><i className="fa-solid fa-envelope"></i> john@gmail.com</p>
+                <p><i className="fa-solid fa-key"></i> john1234</p>
+            </article>
+            </div>
+               
+
+
+            <article>e-mail</article>
+            <input
+                className='email' 
                 type="email" 
-                placeholder='email' 
+                placeholder=' e-mail' 
                 onChange={(e) => setEmail(e.target.value)} 
                 value={email}
             />
 
             {
                 localStorage.getItem("token") ? 
-                    <button onClick={() => localStorage.setItem("token", "")} type="button">
+                    <button className='log-out' onClick={() => localStorage.setItem("token", "")} type="button">
                         Log Out
                     </button> : (
-                    <>
-                    <input 
-                        type="password" 
-                        placeholder='password' 
-                        onChange={(e) => setPassword(e.target.value)} 
-                        value={password}
-                    />   
-                    <p>{loginError}</p>
-                    <button>Submit</button>
-                    </>
+                    <div>
+                        <article>Password</article>
+                        <input
+                            className='password'
+                            type="password" 
+                            placeholder=' password' 
+                            onChange={(e) => setPassword(e.target.value)} 
+                            value={password}
+                        />
+                       
+                        <div className='btn-login'>
+                            <button >Login</button>
+                        </div>
+                        <div className='login-error'>
+                            <p>{loginError}</p>
+                        </div>
+                        
+                    </div>
                 )
             }
-
+            
         </form>
-        
-
-      <Purchases isPurchasesOpen={isPurchasesOpen}/>  
+        </nav>
+      <Purchases isPurchasesOpen={isPurchasesOpen}/>
     </div>
   )
 }

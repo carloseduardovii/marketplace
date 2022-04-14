@@ -56,7 +56,7 @@ const Products = () => {
       <form onSubmit={searchProducts}>
         <input 
           type="text" 
-          placeholder='Search product' 
+          placeholder=' Search product' 
           value={headLine} 
           onChange={e => setHeadLine(e.target.value)}
         />
@@ -80,11 +80,11 @@ const Products = () => {
               <div>
                 <h6 key={product.id}>
                 {product.title}
-                  </h6>
+                </h6>
                 <div className='purchase-card'>
                   <div>
                     <article>Price</article>
-                  <p>$ {product.price}</p>  
+                    <p>$ {product.price}</p>  
                   </div>
                   <i className="fa-solid fa-cart-shopping"></i>
                 </div>
