@@ -9,7 +9,7 @@ export const actions = {
     setProducts: "SET_PRODUCTS",
     setIsLoading: "SET_IS_LOADING",
     setCategories: "SET_CATEGORIES",
-    
+    setPurchases: "SET_PURCHASES"
 }
 
 
@@ -21,7 +21,11 @@ export const setProducts = (products) => ({
     type: actions.setProducts,
     payload: products
 })
+//-------------------------FUNCTION TOKEN---------------------------
 
+const getConfig = () => ({
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+})
 
 /*CHARGE SCREEN*/
 export const setIsLoading = (isLoading) => ({
@@ -60,6 +64,11 @@ export const getCategoriesThunk = () => {
     }
 }
 
+export const setPurchases = purchases => ({
+    type: actions.setPurchases,
+    payload: purchases
+})
+
 /* FILTER CATEGORIES FROM API */
 export const filterCategoryThunk = (id) => {
    return (dispatch) => {
@@ -92,7 +101,23 @@ export const loginThunk = (credentials) => {
 export const addFavoriteThunk = news => {
     return dispatch => {
         dispatch(setIsLoading(true))
-        return axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/cart", news)
+        return axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/cart", 
+        news,
+        getConfig()
+        )
+        .finally(() => dispatch(setIsLoading(false)))
+    }
+}
+
+export const getPurchasesThunk = () =>{
+    return dispatch => {
+        dispatch(setIsLoading(true))
+        return axios.get('https://ecommerce-api-react.herokuapp.com/api/v1/cart', getConfig())
+            .then(res => dispatch(setPurchases(res.data.data.products)))
+            .catch(error =>{
+                if(error.response.status === 404)
+                console.log("El carrito está vacío")
+            })
             .finally(() => dispatch(setIsLoading(false)))
     }
 }
