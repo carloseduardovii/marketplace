@@ -3,7 +3,7 @@ const INITIAL_STATE = {
     products: [],
     isLoading: false,
     categories: [],
-    
+    purchases: []
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -27,6 +27,7 @@ const reducer = (state = INITIAL_STATE, action) => {
                     categories: action.payload
                 }
             
+
             case actions.setPurchases:
                 return{
                     ...state,

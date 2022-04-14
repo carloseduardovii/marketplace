@@ -10,6 +10,11 @@ const Purchases = ({isPurchasesOpen}) => {
     return (
         <div className={`purchases-modal ${isPurchasesOpen ? 'open' : ''}`}>
             My Purchases
+            {
+                purchases.map(purchase => (
+                    <div>HOLA</div>
+                ))
+            }
         </div>
     );
 };

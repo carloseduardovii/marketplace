@@ -21,6 +21,7 @@ export const setProducts = (products) => ({
     type: actions.setProducts,
     payload: products
 })
+//-------------------------FUNCTION TOKEN---------------------------
 
 const getConfig = () => ({
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -64,6 +65,11 @@ export const getCategoriesThunk = () => {
     }
 }
 
+export const setPurchases = purchases => ({
+    type: actions.setPurchases,
+    payload: purchases
+})
+
 /* FILTER CATEGORIES FROM API */
 export const filterCategoryThunk = (id) => {
    return (dispatch) => {
@@ -96,12 +102,16 @@ export const loginThunk = (credentials) => {
 export const addFavoriteThunk = news => {
     return dispatch => {
         dispatch(setIsLoading(true))
-        return axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/cart", news)
-            .finally(() => dispatch(setIsLoading(false)))
+        return axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/cart", 
+        news,
+        getConfig()
+        )
+        .finally(() => dispatch(setIsLoading(false)))
     }
 }
 
-export const getPurchasesThunk = (getConfig) =>{
+
+export const getPurchasesThunk = () =>{
     return dispatch => {
         dispatch(setIsLoading(true))
         return axios.get('https://ecommerce-api-react.herokuapp.com/api/v1/cart', getConfig())

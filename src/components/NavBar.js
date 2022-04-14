@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { loginThunk } from "../redux/actions";
+import { getPurchasesThunk, loginThunk } from "../redux/actions";
 import '../styles/navbar.css'
 import Purchases from './Purchases';
 
@@ -17,12 +17,17 @@ const NavBar = () => {
     //localStorage.setItem("number", "10")
     const dispatch = useDispatch();
 
+    const openPurchases = () => {
+        setIsPurchasesOpen(!isPurchasesOpen);
+        dispatch(getPurchasesThunk())
+    }
+
     const login = (e) => {
         e.preventDefault()
         const credentials = {email, password}
         dispatch(loginThunk(credentials)) 
         .then(res => { 
-            localStorage.setItem("token", res.data.data.token);
+            localStorage.setItem("token", res.data.token);
         setLoginError("");
         setLoginOpen(false);
     })
@@ -37,10 +42,25 @@ const NavBar = () => {
     <div className='navbar'>
         <h2>e-commerce</h2>
         <nav>
+<<<<<<< HEAD
             <button onClick={() => setLoginOpen(!loginOpen)}><i className="fa-solid fa-user"></i></button>
             <button><i className="fa-solid fa-store"></i></button>
             <button onClick={() => setIsPurchasesOpen(!isPurchasesOpen)} ><i className="fa-solid fa-cart-shopping"></i></button>
         
+=======
+            <button onClick={() => setLoginOpen(!loginOpen)}> {/* login */}
+                <i className="fa-solid fa-circle-user"></i>
+            </button>
+            <button><i className="fa-solid fa-store"></i>
+            </button>
+
+            {/*-------------EL BOTON ABRE EL MODAL DEL CARRITO Y EJECUTA EL THUNK */}
+
+            <button onClick={openPurchases} >
+                <i className="fa-solid fa-cart-shopping"></i>
+            </button>
+        </nav>
+>>>>>>> 6d3a9d9179506d79589ca81d4971ffedba5625c8
         
         <form onSubmit={login} className={`login ${loginOpen ? 'open' : ''}`} >
             <div className='icon-login'>

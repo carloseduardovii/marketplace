@@ -8,6 +8,9 @@ import '../styles/products.css'
 const Products = () => {
 
 
+  // const navigate = useNavigate()
+
+
   const dispatch = useDispatch()
   
   const products = useSelector(state => state.products)
