@@ -42,25 +42,12 @@ const NavBar = () => {
     <div className='navbar'>
         <h2>e-commerce</h2>
         <nav>
-<<<<<<< HEAD
+
             <button onClick={() => setLoginOpen(!loginOpen)}><i className="fa-solid fa-user"></i></button>
             <button><i className="fa-solid fa-store"></i></button>
-            <button onClick={() => setIsPurchasesOpen(!isPurchasesOpen)} ><i className="fa-solid fa-cart-shopping"></i></button>
+            <button onClick={openPurchases} ><i className="fa-solid fa-cart-shopping"></i></button>
         
-=======
-            <button onClick={() => setLoginOpen(!loginOpen)}> {/* login */}
-                <i className="fa-solid fa-circle-user"></i>
-            </button>
-            <button><i className="fa-solid fa-store"></i>
-            </button>
 
-            {/*-------------EL BOTON ABRE EL MODAL DEL CARRITO Y EJECUTA EL THUNK */}
-
-            <button onClick={openPurchases} >
-                <i className="fa-solid fa-cart-shopping"></i>
-            </button>
-        </nav>
->>>>>>> 6d3a9d9179506d79589ca81d4971ffedba5625c8
         
         <form onSubmit={login} className={`login ${loginOpen ? 'open' : ''}`} >
             <div className='icon-login'>
