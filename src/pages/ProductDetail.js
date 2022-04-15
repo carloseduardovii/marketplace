@@ -12,7 +12,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch()
 
   const [ recomendProducts, setRecomendProducts ] = useState([])
-  const [ rate, setRate ] = useState(0);
+  // const [ rate, setRate ] = useState(0);
   
   const products = useSelector(state => state.products)
 
@@ -35,7 +35,7 @@ const ProductDetail = () => {
   const addFavorite = () =>{
     const news = {
       news: id,
-      rate: rate
+      // rate: rate
     }
     dispatch(addFavoriteThunk(news))
   }
@@ -44,11 +44,11 @@ const ProductDetail = () => {
     <section className='product-detatl'>
 
       {/* <div className="favorites">
-      <div className="input-container">
-        <label htmlFor="rate"></label>
-        <input type="text" id="rate" value={rate} onChange={e => setRate(e.target.value)}/>
-      </div>
-      <button onClick={addFavorite}><i className="fa-solid fa-bookmark"></i></button>
+        <div className="input-container">
+          <label htmlFor="rate"></label>
+          <input type="text" id="rate" value={rate} onChange={e => setRate(e.target.value)}/>
+        </div>
+        <button onClick={addFavorite}><i className="fa-solid fa-bookmark"></i></button>
       </div> */}
       {/*-----------<h2>e-commerce</h2>-------------*/}
       <div className='return-home'>
