@@ -2,7 +2,7 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { LoadingScreen, NavBar } from './components';
 import './App.css';
-import { Products, ProductDetail, Purchases } from './pages';
+import { Products, ProductDetail} from './pages';
 import { useSelector } from 'react-redux';
 
 
