@@ -13,20 +13,21 @@
     justify-content: space-between;
 }
 
+
+
+/*FAVORITES*/
 .return-home button{
     background: none;
     border: none;
     margin-right: 1rem;
-    color: #FF525A;
     font-size: 20px;
-
 }
 
-/*FAVORITES*/
-.fa-bookmark{
+.return-home .fa-bookmark{
+    color: #FF525A;
     width: 50px;
-   
 }
+
 
 /*LINK HOME*/
 .link-home{
@@ -76,25 +77,54 @@
     justify-content: center;
     padding: 10px;
     flex-wrap: wrap;
-    
+    height: 400px;
 }
 
 .img-detail{
     display: flex;
+    align-items: center;
     justify-content: center;
-    width: 350px;
+    width: 400px;
     padding: 10px;
+    flex-direction: column;
+    height: 400px;
+}
+
+.card-img img{
+    height: 200px;
 }
 
 .product-detatl img{
     object-fit: contain;
 }
 
-
-.desc-favotites .fa-bookmark{
-    width: 50px;
+.seconds-imgs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    width: 70%;
+    justify-content: space-evenly;
 }
 
+.seconds-imgs img{
+    width: 100px;
+    height: 80px;
+    border: 1px solid #FF525A;
+    box-shadow: 1px 2px rgb(0,0,0, .1);
+    border-radius: 5px;
+    padding: 2px;
+    
+}
+
+.seconds-imgs img{
+    object-fit: contain;
+}
+
+.desc-detail{
+    height: 400px;
+    justify-content: space-between;
+}
 
 
 .desc-detail h3{
@@ -113,6 +143,7 @@
     color: #8A8D8E;
     margin-top: 10px;
 }
+
 .desc-detail .price{
     color: #383B3B;
     margin-top: 5px;
@@ -141,8 +172,11 @@ h4{
     margin-left: 20px;
     color: #FF525A;
     font-family: 'Roboto', sans-serif;
+    margin-top: 400px;
 }
 
+
+/*-------------------Discover similar products------------------*/ 
 .recomend{
     display: flex;
     justify-content: center;
@@ -151,12 +185,26 @@ h4{
 
 .product-recomend{
     display: flex;
-    justify-content: center;
-    width: 90vw;
+    justify-content:space-between;
+    align-items: flex-start;
+    width: 85vw;
     flex-wrap: wrap;
     margin-top: 10px;
-   
+    margin-left: 1rem;
 }
+
+.product h6{
+    font-family: 'Roboto', sans-serif;
+}
+
+.product article{
+    font-family: 'Roboto', sans-serif;
+}
+
+.product p{
+    font-family: 'Roboto', sans-serif;
+}
+
 
 /*---------------------PUERCHASE-CARD--------------------*/ 
 
@@ -167,6 +215,11 @@ h4{
     .link-home{
         margin-left: 1rem;
     }
+
+    .return-home button{
+        margin-right: 1.5rem;
+        font-size: 25px;
+    }
 }
 
 
@@ -175,15 +228,14 @@ h4{
     .link-home{
         margin-left: 1.5rem;
     }
-    /* .recomend{
-        
-        height: 30vh;
-        
-        margin-top: 20px;
-    } */
+    .return-home button{
+        margin-right: 2.5rem;
+    }
 
   }
   
   @media screen and (min-width: 1280px){
+
+    
     
   }

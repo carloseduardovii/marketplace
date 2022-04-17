@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Products />}></Route>
           <Route path="/product/:id" element={<ProductDetail />}></Route>
-          <Route path="/purchases" element={<Purchases/>}></Route>
+          {/* <Route path="/purchases" element={<Purchases/>}></Route> */}
         </Routes>
       </HashRouter>
       <footer>

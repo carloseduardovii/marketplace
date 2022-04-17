@@ -66,8 +66,8 @@ const Products = () => {
         <button><i className="fa-solid fa-magnifying-glass"></i></button>
       </form>
 
-      <div className='product-card'>
-
+      <div className='product-list'>
+        <div className='product-card'>
       {
          products.length === 0 ? (
           <p>Sorry, product not found</p>
@@ -98,6 +98,7 @@ const Products = () => {
               
           ))
       }
+      </div>
       </div>
       </div>
     </div>

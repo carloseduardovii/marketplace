@@ -2,20 +2,22 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { addFavoriteThunk, getProductsThunk } from '../redux/actions'
+import Purchases from '../components/Purchases'
+import { addPurchasesThunk, getProductsThunk } from '../redux/actions'
 import '../styles/productDetail.css'
 
 const ProductDetail = () => {
 
-  const { id } = useParams()
-
   const dispatch = useDispatch()
 
+  const { id } = useParams()
+
   const [ recomendProducts, setRecomendProducts ] = useState([])
-  // const [ rate, setRate ] = useState(0);
+  const [ purchase, setPurchase ] = useState(0);
   
   const products = useSelector(state => state.products)
 
+  
   useEffect(() => dispatch(getProductsThunk()), [dispatch])
 
   const productsFound = products.find(productsItem => productsItem.id === Number(id))
@@ -32,95 +34,101 @@ const ProductDetail = () => {
   }, [dispatch, productsFound])
 
   //console.log(recomendProducts)
-  const addFavorite = () =>{
-    const news = {
-      news: id,
-      // rate: rate
+  const addPurchase = () =>{
+    const productPurchased = {
+      productPurchased: id,
+      purchase
     }
-    dispatch(addFavoriteThunk(news))
+    dispatch(addPurchasesThunk(productPurchased))
   }
 
-  return (
-    <section className='product-detatl'>
 
-      {/* <div className="favorites">
-        <div className="input-container">
-          <label htmlFor="rate"></label>
-          <input type="text" id="rate" value={rate} onChange={e => setRate(e.target.value)}/>
-        </div>
-        <button onClick={addFavorite}><i className="fa-solid fa-bookmark"></i></button>
-      </div> */}
-      {/*-----------<h2>e-commerce</h2>-------------*/}
-      <div className='return-home'>
-        <div className='link-home'>
-          <Link to="/"><h3>Home </h3></Link>
-          <div className='icon-circle'>
-            <i className="fa-solid fa-circle"></i>
-          </div>
-          <article>{productsFound?.title}</article>
-        </div>
-        <button 
-          onClick={addFavorite}>
-            <i className="fa-solid fa-bookmark"></i>
-        </button>
+
+
+
+  return (
+    <section className="product-detatl">
+      <div className="purchase">
+        {/*<div className="input-container">
+           <label htmlFor="rate"></label>
+          <input type="text" id="rate" value={rate} />
+        </div> */}
+        {/* <button ><i className="fa-solid fa-bookmark"></i></button> */}
       </div>
       
-     <div className='card-desc'>
-     <div className='product-desc'>
-          <div className='img-detail'>
-            <img src={productsFound?.productImgs[0]} alt="" width={200}/>
+      
+
+      <div className="return-home">
+        <div className="link-home">
+          <Link to="/">
+            <h3>Home </h3>
+          </Link>
+          <div className="icon-circle">
+            <i className="fa-solid fa-circle"></i>
           </div>
-          <div className='desc-detail'>
-            <div className='desc-favotites'>
-            <h3>{productsFound?.title}</h3>
-            
+          <article key={productsFound?.id}>{productsFound?.title}</article>
+        </div>
+        <button>
+          <i className="fa-solid fa-bookmark"></i>
+        </button>
+      </div>
+
+      <div className="card-desc">
+        <div className="product-desc">
+          <div className="img-detail">
+            <div className="card-img">
+              <img src={productsFound?.productImgs[0]} alt="" width={160} />
             </div>
-            
+
+            <div className="seconds-imgs">
+              <img src={productsFound?.productImgs[1]} alt="" width={120} />
+              <img src={productsFound?.productImgs[2]} alt="" width={120} />
+            </div>
+          </div>
+          <div className="desc-detail">
+            <div className="desc-favotites">
+              <h3>{productsFound?.title}</h3>
+            </div>
 
             <p>{productsFound?.description}</p>
             <article>Price</article>
-            <p className='price'>$ {productsFound?.price}</p>
-            <button>Add to cart <i className="fa-solid fa-cart-shopping"></i></button>
+            <p className="price">$ {productsFound?.price}</p>
+            <button onClick={addPurchase} onChange={e => setPurchase(e.target.value)} value={purchase}>
+              Add to cart <i className="fa-solid fa-cart-shopping"></i>
+            </button>
           </div>
+        </div>
       </div>
-     </div>
-      
-    
-        <h4>Discover similar products</h4>
-      
-      <div className='recomend'>
-        <ul className='product-recomend'>
-          {
-            recomendProducts.map(productItem => (
-              <div className='product'>
-                <Link to={`/product/${productItem.id}`}>
-                <div className='product-img'>
-                  <img src={productItem.productImgs[0]} alt="" width={190}/>
+
+      <h4>Discover similar products</h4>
+
+      <div className="recomend">
+        <ul className="product-recomend">
+          {recomendProducts.map((productItem) => (
+            <div className="product">
+              <Link to={`/product/${productItem.id}`}>
+                <div className="product-img">
+                  <img src={productItem.productImgs[0]} alt="" width={190} />
                 </div>
-                </Link>
-                <div>
-                  <h6 key={productItem.id}>
-                  {productItem.title}
-                    </h6>
-                    <div className='purchase-card'>
+              </Link>
+              <div>
+                <h6 key={productItem.id}>{productItem.title}</h6>
+                <div className="purchase-card">
                   <div>
                     <article>Price</article>
-                    <p>$ {productItem.price}</p>  
+                    <p>$ {productItem.price}</p>
                   </div>
                   <i className="fa-solid fa-cart-shopping"></i>
                 </div>
-
-                </div>
               </div>
-              
-            ))
-          }
+            </div>
+          ))}
         </ul>
       </div>
-      
+
+     
     </section>
-    
-  )
+  );
 }
 
 export default ProductDetail
