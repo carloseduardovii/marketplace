@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import Purchases from '../components/Purchases'
 import { addPurchasesThunk, getProductsThunk } from '../redux/actions'
 import '../styles/productDetail.css'
 
