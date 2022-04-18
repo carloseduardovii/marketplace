@@ -3,7 +3,8 @@ const INITIAL_STATE = {
     products: [],
     isLoading: false,
     categories: [],
-    purchases: []
+    purchases: [],
+    productsOnCart: []
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -33,7 +34,12 @@ const reducer = (state = INITIAL_STATE, action) => {
                     ...state,
                     purchases: action.payload
                 }
-    
+                
+            case actions.setCart:
+                return{
+                    ...state,
+                    productsOnCart: [...action.payload]
+                }
                 
         default:
             return state;

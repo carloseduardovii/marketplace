@@ -9,12 +9,13 @@ export const actions = {
     setProducts: "SET_PRODUCTS",
     setIsLoading: "SET_IS_LOADING",
     setCategories: "SET_CATEGORIES",
-    setPurchases: "SET_PURCHASES"
+    setPurchases: "SET_PURCHASES",
+    setCart: "SET_CART"
 }
 
 
 const getConfig = () => ({
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
 })
 
 /*------------------ACTIONS---------------------*/
@@ -24,10 +25,9 @@ export const setProducts = (products) => ({
     type: actions.setProducts,
     payload: products
 })
+
+
 //-------------------------FUNCTION TOKEN---------------------------
-
-
-
 
 /*CHARGE SCREEN*/
 export const setIsLoading = (isLoading) => ({
@@ -45,6 +45,13 @@ export const setPurchases = (purchases) => ({
     type: actions.setPurchases,
     payload: purchases
 })
+
+export const addToCart = (cart) => ({
+    type: actions.setCart,
+    payload: cart
+})
+
+
 
 /*-------------------THUNKS---------------------*/
 
@@ -81,6 +88,7 @@ export const filterCategoryThunk = id => {
     }
 }
 
+/*FILTERED BY WORD*/
 export const filterHeadLineThunk = (headLine) => {
     return (dispatch) => {
         dispatch (setIsLoading(true))
@@ -91,6 +99,7 @@ export const filterHeadLineThunk = (headLine) => {
     }
 }
 
+/*lOGIN*/
 export const loginThunk = credentials => {
     return (dispatch) => {
         dispatch (setIsLoading(true))
@@ -100,16 +109,30 @@ export const loginThunk = credentials => {
     }
 }
 
-export const addPurchasesThunk = products => {
-    return (dispatch) => {
-        dispatch(setIsLoading(true))
-        return axios
-        .post("https://ecommerce-api-react.herokuapp.com/api/v1/purchases", products, getConfig())
-        .finally(() => dispatch(setIsLoading(false)))
+/*ADD PRODUCTS TO CART*/
+export const startAddToCart = product => {
+    console.log(product)
+    return dispatch => {
+        axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/cart", product, getConfig())
+        .then(res => console.log(res.data))
     }
 }
 
+export const startGetCart = () => {
+    return dispatch => {
+        axios.get("https://ecommerce-api-react.herokuapp.com/api/v1/cart", getConfig())
+        .then(res => dispatch(addToCart(res.data.data.cart.products)))
+        .finally(() => dispatch(setIsLoading(false)))
+    }
+} 
 
+
+
+
+
+
+
+/*GET PURCHASES*/
 export const getPurchasesThunk = () =>{
     return (dispatch) => {
         dispatch(setIsLoading(true))
@@ -123,3 +146,10 @@ export const getPurchasesThunk = () =>{
          .finally(() => dispatch(setIsLoading(false)))
     }
 }
+
+// return (dispatch) => {
+//     dispatch(setIsLoading(true))
+//     return axios
+//     .post("https://ecommerce-api-react.herokuapp.com/api/v1/purchases", productsPurchased, getConfig())
+//     .finally(() => dispatch(setIsLoading(false)))
+//}
